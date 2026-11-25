@@ -1,55 +1,46 @@
-# ZONARIDER — Flutter (versi penyempurnaan)
 
-Versi ini mempertahankan identitas Dark Premium Graphite & Orange, dengan seluruh antarmuka berbahasa Indonesia.
+# ZONARIDER
 
-## Yang diperbaiki
-- Semua judul, tombol, petunjuk, dan navigasi diterjemahkan ke Bahasa Indonesia.
-- Navigasi bawah: Beranda, Jelajahi, Bandingkan, Favorit.
-- Kartu katalog diberi tombol simpan favorit langsung.
-- Ilustrasi kartu dirapikan agar label merek tidak bertumpuk dengan ikon.
-- Pencarian, filter merek, filter kategori, dan atur ulang filter.
-- Detail motor dengan daftar spesifikasi yang tidak mengarang data kosong.
-- Perbandingan motor mencakup kategori, tahun, kapasitas, tipe mesin, transmisi, tenaga, torsi, berat, dan harga.
-- Halaman favorit memiliki petunjuk dan tombol kembali ke katalog saat masih kosong.
-- Hasil API ditampilkan terpisah agar hasil untuk varian berbeda tidak otomatis dianggap cocok.
-- Favorit dan cache hasil API tetap menggunakan SQLite.
+ZONARIDER adalah aplikasi katalog motor berbasis Flutter yang dibuat untuk tugas UTP Mobile Programming. Aplikasi ini membantu pengguna melihat informasi motor dari beberapa merek yang ada di Indonesia.
 
-## Menjalankan di VS Code
-1. Cadangkan project lama.
-2. Ekstrak ZIP ini.
-3. Salin folder `lib`, `assets`, dan `pubspec.yaml` ke project Flutter lama (timpa file yang sama), atau buka folder hasil ekstrak sebagai project.
-4. Jalankan:
-   ```bash
-   flutter clean
-   flutter pub get
-   flutter run
-   ```
+## Fitur
 
-## Mengaktifkan API
-Project menggunakan API Ninjas Motorcycles. Buat API key pada akun API Ninjas, lalu jalankan:
+- Melihat katalog motor Honda, Yamaha, Suzuki, dan Kawasaki.
+- Mencari motor berdasarkan nama.
+- Memfilter motor berdasarkan merek dan kategori.
+- Melihat detail dan spesifikasi motor.
+- Membandingkan dua motor.
+- Menyimpan motor ke daftar favorit.
+- Mengambil data tambahan melalui API Ninjas.
+
+## Teknologi
+
+- Flutter dan Dart
+- SQLite untuk menyimpan favorit dan cache data API
+- JSON untuk data katalog lokal
+- API Ninjas untuk data motor tambahan
+
+## Menjalankan aplikasi
+
+Pastikan Flutter sudah terpasang. Buka folder proyek di VS Code, lalu jalankan perintah berikut di terminal:
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Penggunaan API
+
+Aplikasi menggunakan API Ninjas untuk mengambil data tambahan. Untuk mengaktifkannya, gunakan API key milik sendiri:
+
 ```bash
 flutter run --dart-define=API_NINJAS_KEY=KUNCI_API_ANDA
 ```
-Jangan mengunggah API key ke GitHub publik. Untuk aplikasi produksi, simpan kunci pada backend/proxy.
 
-Jika API key belum dipasang, fitur katalog lokal dan favorit SQLite tetap dapat digunakan.
+Jangan masukkan API key asli ke repository publik. Tanpa API key, fitur katalog lokal dan favorit tetap dapat digunakan.
 
-## Android
-Lihat `PENGATURAN_ANDROID.txt` untuk label aplikasi dan izin internet.
+## Catatan
 
-## Catatan akurasi
-Katalog berisi 24 model awal yang telah dipilih untuk pasar Indonesia. Data tahun, kapasitas, tenaga, torsi, harga, bobot, dan tinggi jok pada berkas JSON yang belum terverifikasi tetap `null`. Aplikasi menampilkan "Belum tersedia" alih-alih mengarang spesifikasi. Hasil API juga perlu dicocokkan dengan tahun dan varian Indonesia.
-Foto produk resmi belum disertakan; area gambar memakai ilustrasi kategori agar tidak memakai foto yang salah atau tidak berizin.
+Sebagian spesifikasi motor mungkin belum tersedia atau perlu diverifikasi sesuai tahun dan variannya. Jika data belum ada, aplikasi akan menampilkan keterangan bahwa data belum tersedia.
 
-
-## Foto motor lokal
-
-Foto yang diberikan pengguna disimpan di `assets/motorcycles/` dan dipetakan melalui properti `imageAsset` pada `assets/data/motorcycles.json`. Foto tersedia untuk seluruh 24 model: 6 Honda, 6 Yamaha, 6 Suzuki, dan 6 Kawasaki. Setiap file gambar dipetakan berdasarkan model motor yang dituju; periksa kembali tahun/varian foto jika katalog diperbarui.
-
-Jika mengganti foto, pertahankan nama file sesuai ID motor (contoh `honda_04.jpg`) atau ubah nilai `imageAsset` pada JSON.
-
-
-## Pembaruan aset foto
-- Suzuki: Burgman Street 125EX, GSX-R150, V-Strom 250 SX.
-- Kawasaki: W175, KLX150, KLX230, Ninja 250, Ninja ZX-25R, Versys-X 250.
-- Semua foto dipanggil melalui `Image.asset` menggunakan jalur pada `motorcycles.json`.
+Foto motor disimpan di folder `assets/motorcycles/` dan dipetakan melalui file `assets/data/motorcycles.json`.
