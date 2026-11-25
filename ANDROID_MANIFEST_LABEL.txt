@@ -1,0 +1,3 @@
+In android/app/src/main/AndroidManifest.xml, inside <application ...>, set:
+android:label="ZONARIDER"
+Keep the rest of your generated manifest unchanged.

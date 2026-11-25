@@ -1,0 +1,7 @@
+Ubah label aplikasi di android/app/src/main/AndroidManifest.xml:
+<application
+    android:label="ZONARIDER"
+    ...
+>
+Tambahkan izin internet di dalam manifest, di luar tag application:
+<uses-permission android:name="android.permission.INTERNET" />
